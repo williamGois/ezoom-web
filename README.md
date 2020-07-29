@@ -7,9 +7,11 @@ git clone
 
 Banco de dados ezoom_ci
 
-criar pasta
+chmod 777 upload/tumb/
+chmod 777 upload/
 
 Projeto esta hospedado: https://fiuzas.com.br/ezoom
+
 
 ### API
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 29/07/2020 às 17:52
+-- Tempo de geração: 29/07/2020 às 22:54
 -- Versão do servidor: 10.4.11-MariaDB
 -- Versão do PHP: 7.2.28
 
@@ -39,17 +39,6 @@ CREATE TABLE `categoria` (
 --
 
 INSERT INTO `categoria` (`id`, `nome`, `slug`) VALUES
-(1, 'Paisajes', 'paisajes'),
-(2, 'Animales', 'animales'),
-(3, 'Automoviles', 'automoviles'),
-(4, 'Figuras 3D', 'figuras-3d'),
-(5, 'Espacio', 'espacio'),
-(6, 'Mujeres Famosas', 'mujeres-famosas'),
-(9, 'Peliculas', 'peliculas'),
-(10, 'Celulares', 'celulares'),
-(11, 'Computación', 'computacion'),
-(12, 'Programación', 'programacion'),
-(13, 'Nalgas Peludas', 'nalgas-peludas'),
 (14, 'Teste', 'teste');
 
 -- --------------------------------------------------------
@@ -72,8 +61,7 @@ CREATE TABLE `cursos` (
 --
 
 INSERT INTO `cursos` (`id`, `titulo`, `slug`, `imagem`, `categoria_id`, `descricao`) VALUES
-(26, 'Aquele que esta acima de todos os clãs', 'aquele-que-esta-acima-de-todos-os-clas', 'e4dcd67a9897592550b91689b984319c.jpg', 1, 'Escanor Pecado do Orgulho TESTE'),
-(27, 'ESCANOR', 'escanor', 'd9372dd6bab7ed41c8b9cddf435717d1.jpg', 1, 'TESTE');
+(3, 'teste', 'teste', '010534ce052e321f48c4c639747a3ba8.jpg', 14, 'teste');
 
 -- --------------------------------------------------------
 
@@ -164,7 +152,7 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de tabela `cursos`
 --
 ALTER TABLE `cursos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `cursos_imagens`
