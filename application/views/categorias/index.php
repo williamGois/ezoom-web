@@ -22,14 +22,14 @@
         <div class="panel galeria-link">
           <!--Image-->
           <div class="img">
-            <a class="fancybox-effects-a" href="<?= base_url('upload/'.$curso->imagem); ?>" data-fancybox-group="gallery" title="<?= $curso->titulo; ?>" >
+            <a class="fancybox-effects-a" href="<?= base_url('show/' . $curso->id); ?>" data-fancybox-group="gallery" title="<?= $curso->titulo; ?>" >
               <img src="<?= base_url('upload/tumb/'.$curso->imagem); ?>" class="img-responsive galeria-img" />
             </a>
           </div>
           <!--/Image-->
           <!--Body-->
           <div class="panel-body">
-            <a href="<?= base_url('show/'.$curso->slug); ?>">
+            <a href="<?= base_url('show/' . $curso->id); ?>">
               <h5 class="text-center">
                 <strong><?= $curso->titulo; ?></strong>
               </h5>
