@@ -62,7 +62,7 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	/**
 	 * Scrollable flag
 	 *
-	 * Determines what cursor type to use when executing queries.
+	 * Determines what produtor type to use when executing queries.
 	 *
 	 * FALSE or SQLSRV_CURSOR_FORWARD would increase performance,
 	 * but would disable num_rows() (and possibly insert_id())

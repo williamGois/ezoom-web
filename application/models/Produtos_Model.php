@@ -1,6 +1,6 @@
 <?php
 
-class Cursos_Model extends MY_Model
+class Produtos_Model extends MY_Model
 {
   public $id;
   public $titulo;
@@ -9,52 +9,52 @@ class Cursos_Model extends MY_Model
   public $descricao;
   public $categoria_id;
 
-  // Mostra todos Cursos
+  // Mostra todos Produtos
   public function get_list($inicio = 0, $limite = 100)
   {
     $this->db->limit($limite, $inicio);
     $this->db->order_by('id', 'desc');
 
-    $result = $this->db->get('cursos');
+    $result = $this->db->get('produtos');
     return $result->result();
   }
 
-  // Busca um Curso.
+  // Busca um Produto.
   public function get_where($name, $value)
   {
     if (is_null($value)) return $this;
 
     $this->db->where($name, $value);
-    $result = $this->db->get('cursos');
+    $result = $this->db->get('produtos');
     return $result->first_row(self::class);
   }
 
-  // Busca todos Cursos.
+  // Busca todos Produtos.
   public function get_where_all($name, $value)
   {
     if (is_null($value)) return $this;
 
     $this->db->where($name, $value);
-    $result = $this->db->get('cursos');
+    $result = $this->db->get('produtos');
     return $result->result();
   }
 
-  // Salva um curso
+  // Salva um produto
   public function save()
   {
     if (is_null($this->id)) {
-      return $this->db->insert('cursos', $this);
+      return $this->db->insert('produtos', $this);
     }
 
     $this->db->where('id', (int) $this->id);
-    return $this->db->update('cursos', $this);
+    return $this->db->update('produtos', $this);
   }
 
   // Deleta um registro.
   public function delete()
   {
     $this->db->where('id', (int) $this->id);
-    return $this->db->delete('cursos');
+    return $this->db->delete('produtos');
   }
 
   /* ------------------------------------------------------------ */
@@ -62,13 +62,13 @@ class Cursos_Model extends MY_Model
   // Numero de registros.
   public function count()
   {
-    $result = $this->db->query('SELECT COUNT(id) AS count FROM cursos');
+    $result = $this->db->query('SELECT COUNT(id) AS count FROM produtos');
     $row = $result->row_array();
 
     return (int) $row['count'];
   }
 
-  // Verfica se registro é Curso.
+  // Verfica se registro é Produto.
   public function is_unique($name, $value)
   {
     $this->db->limit(1);
@@ -78,7 +78,7 @@ class Cursos_Model extends MY_Model
       $this->db->where('id !=', $this->id);
     }
 
-    return $this->db->get('cursos')->num_rows() === 0;
+    return $this->db->get('produtos')->num_rows() === 0;
   }
 
   /* ------------------------------------------------------------ */

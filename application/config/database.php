@@ -74,12 +74,12 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'	=> '',
-	'hostname' => 'localhost',
+	'dsn'	=> 'mysql:host=db;port=3306;username=root;password=root;dbname=91-seguros',
+	'hostname' => 'db',
 	'username' => 'root',
-	'password' => '',
-	'database' => 'ezoom_ci',
-	'dbdriver' => 'mysqli',
+	'password' => 'root',
+	'database' => '91-seguros',
+	'dbdriver' => 'pdo',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),

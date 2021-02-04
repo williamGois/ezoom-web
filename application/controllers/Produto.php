@@ -1,6 +1,6 @@
 <?php
 
-class Curso extends CI_Controller 
+class Produto extends CI_Controller 
 {
 
   public function __construct() 
@@ -8,8 +8,8 @@ class Curso extends CI_Controller
     parent::__construct();
 
     $this->load->model('Categoria_Model');
-    $this->load->model('Cursos_Model');
-    $this->load->model('CursosImagens_Model');
+    $this->load->model('Produtos_Model');
+    $this->load->model('ProdutosImagens_Model');
     
   }
 
@@ -19,18 +19,18 @@ class Curso extends CI_Controller
     $indice = is_numeric($indice) ? $indice : 0;
     $limite = 6;
 
-    $this->_init_library_pagination($this->Cursos_Model->count(), $limite);
+    $this->_init_library_pagination($this->Produtos_Model->count(), $limite);
 
     $header['categorias'] = $this->Categoria_Model->get_list();
-    $index['cursos'] = $this->Cursos_Model->get_list($indice, $limite);
+    $index['produtos'] = $this->Produtos_Model->get_list($indice, $limite);
 
     $this->load->view('templates/header', $header);
-    $this->load->view('curso/index', $index);
+    $this->load->view('produto/index', $index);
     $this->load->view('templates/footer');
   }
 
   /**
-   * Mostra Curso
+   * Mostra Produto
    */
   public function show($id = NULL) 
   {
@@ -38,10 +38,10 @@ class Curso extends CI_Controller
     $this->load->helper('url');
 
     $header['categorias'] = $this->Categoria_Model->get_list();
-    $show['curso'] = $this->Cursos_Model->get_where('id', $id);
-    $show['curso_imagens'] = $this->CursosImagens_Model->get_where_all('curso_id', $id);
+    $show['produto'] = $this->Produtos_Model->get_where('id', $id);
+    $show['produto_imagens'] = $this->ProdutosImagens_Model->get_where_all('produto_id', $id);
     $this->load->view('templates/header', $header);
-    $this->load->view('curso/show', $show);
+    $this->load->view('produto/show', $show);
     $this->load->view('templates/footer');
   }
 

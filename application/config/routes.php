@@ -50,20 +50,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 
-$route['default_controller'] = 'curso';
+$route['default_controller'] = 'produto';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 
 $route['admin'] 			= 'admin/inicio';
 // Ruteo para la paginacion
-$route['pagina/(:num)'] 	= 'curso/index/$1';
-// Ruteo para ver las cursoses en una sola pagina
-$route['show/(:any)'] 	= 'curso/show/$1';
+$route['pagina/(:num)'] 	= 'produto/index/$1';
+// Ruteo para ver las produtoses en una sola pagina
+$route['show/(:any)'] 	= 'produto/show/$1';
 $route['categoria/(:any)'] 	= 'categoria/index/$1';
 
 // Api
-$route['api/cursos'] 	= 'admin/api/cursos';
+$route['api/produtos'] 	= 'admin/api/produtos';
 $route['api/categorias'] 	= 'admin/api/categorias';
-$route['api/categoria/(:any)'] 	= 'admin/api/cursoBuscaCursoPorCategoria/$1';
-$route['api/curso/(:any)'] 	= 'admin/api/cursoMostraCurso/$1';
+$route['api/categoria/(:any)'] 	= 'admin/api/produtoBuscaProdutoPorCategoria/$1';
+$route['api/produto/(:any)'] 	= 'admin/api/produtoMostraProduto/$1';

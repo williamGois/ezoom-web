@@ -56,7 +56,7 @@ class CI_DB_oci8_result extends CI_DB_result {
 	public $stmt_id;
 
 	/**
-	 * Cursor ID
+	 * Produtor ID
 	 *
 	 * @var	resource
 	 */

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <?= link_tag('assets/bootstrap/css/bootstrap.min.css') ?>
-    <?= link_tag('assets/app/css/curso.min.css') ?>
+    <?= link_tag('assets/app/css/produto.min.css') ?>
 
   </head>
   <body>

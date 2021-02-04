@@ -5,17 +5,17 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Ezoom Cursos</title>
+	<title>91 seguros</title>
 
 	<?= link_tag('assets/bootstrap/css/bootstrap.min.css') ?>
-	<?= link_tag('assets/app/css/curso.min.css') ?>
+	<?= link_tag('assets/app/css/produto.min.css') ?>
 
 	<?php /* echo link_tag('assets/font-awesome-4.4.0/css/font-awesome.min.css'); */ ?>
 	<style type="text/css">
 		body {
 			padding-top: 40px;
 			padding-bottom: 40px;
-			background: #9a6ead;
+			background: #e94132;
 
 		}
 		.form-signin {
@@ -54,7 +54,7 @@
 		</div>
 
 		<?= form_open('admin/auth/login', 'class="form-signin thumbnail"'); ?>
-			<h2 class="form-signin-heading text-center">Administração Ezoom Cursos</h2>
+			<h2 class="form-signin-heading text-center">Administração 91 seguros</h2>
 		
 			<div class="form-group">
 				<label>E-mail</label>

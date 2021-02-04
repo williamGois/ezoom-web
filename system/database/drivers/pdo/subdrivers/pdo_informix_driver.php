@@ -123,7 +123,7 @@ class CI_DB_pdo_informix_driver extends CI_DB_pdo_driver {
 			empty($this->server) OR $this->dsn .= '; server='.$this->server;
 
 			$this->dsn .= '; protocol='.(isset($this->protocol) ? $this->protocol : 'onsoctcp')
-				.'; EnableScrollableCursors=1';
+				.'; EnableScrollableProdutors=1';
 		}
 	}
 

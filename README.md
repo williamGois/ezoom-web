@@ -1,33 +1,74 @@
-# EZOOM
+
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+  <a href="">
+    <img src="git_imagem/logo.png" alt="Logo">
+  </a>
+
+  <h3 align="center">91-seguros-Web</h3>
+</p>
+
+  <p align="center">
+    Este é um teste usando os conhecimentos obtidos para criar uma Aplicação Web codeigniter
+    <br />
+    <a href=""><strong>Confira o Documento »</strong></a>
+    <br />
+    <br />
+  </p>
+
+
+# 91-Seguros-web
 
 
 ### Installation
 
-git clone
+* git clone
 
-Banco de dados ezoom_ci
+* Banco de dados 91-seguros.sql
 
-chmod 777 upload/tumb/
-chmod 777 upload/
+* chmod 777 upload/tumb/
 
-Projeto esta hospedado: https://fiuzas.com.br/ezoom
+* chmod 777 upload/
 
+* php -S localhost:8000
+
+Projeto esta hospedado: https://fiuzas.com.br/91-seguros
+
+
+<p align="center">
+  <a href="">
+    <img src="git_imagem/1.png" alt="Logo">
+  </a>
+</p>
+
+<p align="center">
+  <a href="">
+    <img src="git_imagem/2.png" alt="Logo">
+  </a>
+</p>
 
 ### API
 
-//Lista cursos
-GET https://fiuzas.com.br/ezoom/api/cursos
+//Lista produtos
+```sh 
+    GET https://fiuzas.com.br/91-seguros/api/produtos 
+```
 
-//Lista curso com id identificator
-GET https://fiuzas.com.br/ezoom/api/curso/$id_curso
+//Lista produto com id identificator
+```sh 
+GET https://fiuzas.com.br/91-seguros/api/produto/$id_produto ```
+```
 
-//Mostra Cursos com essa categoria
-GET https://fiuzas.com.br/ezoom/api/categoria/$id_categoria
+//Mostra Produtos com essa categoria
+```sh
+GET https://fiuzas.com.br/91-seguros/api/categoria/$id_categoria
+```
 
 ### USUARIO NO BANCO DE DADOS
 Login: admin@example.com
 senha: 123456
 ###
 
-**Pronto! Bora Codar!** 
+
 

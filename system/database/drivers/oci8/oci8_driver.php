@@ -76,7 +76,7 @@ class CI_DB_oci8_driver extends CI_DB {
 	public $stmt_id;
 
 	/**
-	 * Cursor ID
+	 * Produtor ID
 	 *
 	 * @var	resource
 	 */
@@ -289,13 +289,13 @@ class CI_DB_oci8_driver extends CI_DB {
 	// --------------------------------------------------------------------
 
 	/**
-	 * Get cursor. Returns a cursor from the database
+	 * Get produtor. Returns a produtor from the database
 	 *
 	 * @return	resource
 	 */
-	public function get_cursor()
+	public function get_produtor()
 	{
-		return $this->curs_id = oci_new_cursor($this->conn_id);
+		return $this->curs_id = oci_new_produtor($this->conn_id);
 	}
 
 	// --------------------------------------------------------------------
@@ -328,14 +328,14 @@ class CI_DB_oci8_driver extends CI_DB {
 		// Build the query string
 		$sql = 'BEGIN '.$package.'.'.$procedure.'(';
 
-		$have_cursor = FALSE;
+		$have_produtor = FALSE;
 		foreach ($params as $param)
 		{
 			$sql .= $param['name'].',';
 
 			if (isset($param['type']) && $param['type'] === OCI_B_CURSOR)
 			{
-				$have_cursor = TRUE;
+				$have_produtor = TRUE;
 			}
 		}
 		$sql = trim($sql, ',').'); END;';
@@ -343,7 +343,7 @@ class CI_DB_oci8_driver extends CI_DB {
 		$this->_reset_stmt_id = FALSE;
 		$this->stmt_id = oci_parse($this->conn_id, $sql);
 		$this->_bind_params($params);
-		$result = $this->query($sql, FALSE, $have_cursor);
+		$result = $this->query($sql, FALSE, $have_produtor);
 		$this->_reset_stmt_id = TRUE;
 		return $result;
 	}

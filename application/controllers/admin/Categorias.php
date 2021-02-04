@@ -52,7 +52,7 @@ class Categorias extends CI_Controller
   }
 
   /**
-   * Cadastra nova Categoria para o curso
+   * Cadastra nova Categoria para o produto
    * @param Categoria_Model $categoria modelo.
    */
   private function save(Categoria_Model $categoria)
@@ -70,7 +70,7 @@ class Categorias extends CI_Controller
   }
 
   /**
-   * Deleta a categoria do curso
+   * Deleta a categoria do produto
    * @param int $id identificador.
    */
   public function delete($id)

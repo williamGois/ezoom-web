@@ -16,22 +16,22 @@
   </div>
 
   <div class="row">
-    <?php foreach ($cursos as $curso): ?>
+    <?php foreach ($produtos as $produto): ?>
       <div class="col-sm-4 galeria-item">
          <!--Panel-->
         <div class="panel galeria-link">
           <!--Image-->
           <div class="img">
-            <a class="fancybox-effects-a" href="<?= base_url('show/' . $curso->id); ?>" data-fancybox-group="gallery" title="<?= $curso->titulo; ?>" >
-              <img src="<?= base_url('upload/tumb/'.$curso->imagem); ?>" class="img-responsive galeria-img" />
+            <a class="fancybox-effects-a" href="<?= base_url('show/' . $produto->id); ?>" data-fancybox-group="gallery" title="<?= $produto->titulo; ?>" >
+              <img src="<?= base_url('upload/tumb/'.$produto->imagem); ?>" class="img-responsive galeria-img" />
             </a>
           </div>
           <!--/Image-->
           <!--Body-->
           <div class="panel-body">
-            <a href="<?= base_url('show/' . $curso->id); ?>">
+            <a href="<?= base_url('show/' . $produto->id); ?>">
               <h5 class="text-center">
-                <strong><?= $curso->titulo; ?></strong>
+                <strong><?= $produto->titulo; ?></strong>
               </h5>
             </a>
           </div>

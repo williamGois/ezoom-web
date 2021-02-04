@@ -7,16 +7,16 @@ class Api extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Categoria_Model');
-        $this->load->model('Cursos_Model');
-        $this->load->model('CursosImagens_Model');
+        $this->load->model('Produtos_Model');
+        $this->load->model('ProdutosImagens_Model');
     }
 
     /**
-     *  API para Mostrar os cursos.
+     *  API para Mostrar os produtos.
      */
-    public function cursos()
+    public function produtos()
     {
-        $index['cursos'] = $this->Cursos_Model->get_list();
+        $index['produtos'] = $this->Produtos_Model->get_list();
         echo json_encode($index);
     }
 
@@ -31,21 +31,21 @@ class Api extends CI_Controller
 
 
     /**
-     *  API para Mostrar os cursos pela categoria selecionada.
+     *  API para Mostrar os produtos pela categoria selecionada.
      */
-    public function cursoBuscaCursoPorCategoria($id)
+    public function produtoBuscaProdutoPorCategoria($id)
     {
-        $show['curso'] = $this->Cursos_Model->get_where_all('categoria_id', $id);
+        $show['produto'] = $this->Produtos_Model->get_where_all('categoria_id', $id);
         echo json_encode($show);
     }
 
     /**
-     *  API para Mostrar os cursos pela categoria selecionada.
+     *  API para Mostrar os produtos pela categoria selecionada.
      */
-    public function cursoMostraCurso($id)
+    public function produtoMostraProduto($id)
     {
-        $show['curso'] = $this->Cursos_Model->get_where('id', $id);
-        $show['curso_imagens'] = $this->CursosImagens_Model->get_where_all('curso_id', $id);
+        $show['produto'] = $this->Produtos_Model->get_where('id', $id);
+        $show['produto_imagens'] = $this->ProdutosImagens_Model->get_where_all('produto_id', $id);
         echo json_encode($show);
     }
 }

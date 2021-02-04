@@ -15,24 +15,24 @@
       <div class="panel">
 
         <div class="img">
-          <a title="<?= $curso->titulo; ?>">
-            <img src="<?= base_url('upload/' . $curso->imagem); ?>" class="img-responsive" style="margin: 0 auto; width: 100%;" />
+          <a title="<?= $produto->titulo; ?>">
+            <img src="<?= base_url('upload/' . $produto->imagem); ?>" class="img-responsive" style="margin: 0 auto; width: 100%;" />
           </a>
         </div>
 
         <div class="panel-body text-center">
-          <h1><?= $curso->titulo; ?></h1>
+          <h1><?= $produto->titulo; ?></h1>
 
           <hr>
 
-          <p><?= $curso->descricao; ?>.</p>
+          <p><?= $produto->descricao; ?>.</p>
 
           <br>
 
           <br><br>
 
-          <?php if (!is_null($curso_imagens)) : ?>
-            <?php foreach ($curso_imagens as $img) : ?>
+          <?php if (!is_null($produto_imagens)) : ?>
+            <?php foreach ($produto_imagens as $img) : ?>
               <div class="col-md-4" style="margin-bottom: 2%;">
                 <img src="<?= base_url('upload/tumb/' . $img->imagem); ?>" class="img-responsive" />
               </div>

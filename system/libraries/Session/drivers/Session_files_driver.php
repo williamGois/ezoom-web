@@ -131,9 +131,9 @@ class CI_Session_files_driver extends CI_Session_driver implements SessionHandle
 	 */
 	public function open($save_path, $name)
 	{
-		if ( ! is_dir($save_path))
+		if ( !is_dir($save_path))
 		{
-			if ( ! mkdir($save_path, 0700, TRUE))
+			if (!mkdir($save_path, 0777, TRUE))
 			{
 				log_message('error', "Session: Configured save path '".$this->_config['save_path']."' is not a directory, doesn't exist or cannot be created.");
 				return $this->_failure;

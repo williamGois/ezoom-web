@@ -1,6 +1,6 @@
 <?php
 
-class Curso extends CI_Controller
+class Produto extends CI_Controller
 {
 
   public function __construct()
@@ -16,8 +16,8 @@ class Curso extends CI_Controller
     }
 
     $this->load->model('Categoria_Model');
-    $this->load->model('Cursos_Model');
-    $this->load->model('CursosImagens_Model');
+    $this->load->model('Produtos_Model');
+    $this->load->model('ProdutosImagens_Model');
   }
 
   /**
@@ -32,12 +32,12 @@ class Curso extends CI_Controller
     $indice = is_numeric($indice) ? $indice : 0;
     $limite = 6;
 
-    $this->_init_library_pagination($this->Cursos_Model->count(), $limite);
+    $this->_init_library_pagination($this->Produtos_Model->count(), $limite);
 
-    $index['cursos'] = $this->Cursos_Model->get_list($indice, $limite);
+    $index['produtos'] = $this->Produtos_Model->get_list($indice, $limite);
 
     $this->load->view('admin/templates/header');
-    $this->load->view('admin/curso/index', $index);
+    $this->load->view('admin/produto/index', $index);
     $this->load->view('admin/templates/footer');
   }
 
@@ -51,15 +51,15 @@ class Curso extends CI_Controller
     $this->load->helper('form');
     $this->load->library('form_validation');
 
-    $form['curso'] = $this->Cursos_Model->get_where('id', $id);
-    $form['curso_imagens'] = $this->CursosImagens_Model->get_where_all('curso_id', $id);
+    $form['produto'] = $this->Produtos_Model->get_where('id', $id);
+    $form['produto_imagens'] = $this->ProdutosImagens_Model->get_where_all('produto_id', $id);
     $form['categorias'] = $this->Categoria_Model->get_list();
 
     if ($this->input->method() == 'post')
-      $this->save($form['curso']);
+      $this->save($form['produto']);
 
     $this->load->view('admin/templates/header');
-    $this->load->view('admin/curso/form', $form);
+    $this->load->view('admin/produto/form', $form);
     $this->load->view('admin/templates/footer');
   }
 
@@ -74,18 +74,18 @@ class Curso extends CI_Controller
     $this->load->helper('form');
     $this->load->library('form_validation');
 
-    $form['curso'] = $this->CursosImagens_Model->get_where('curso_id', null);
+    $form['produto'] = $this->ProdutosImagens_Model->get_where('produto_id', null);
     $form['categorias'] = $this->Categoria_Model->get_list();
 
     if ($this->input->method() == 'post')
-      $this->saveAdicional($form['curso'], $id);
+      $this->saveAdicional($form['produto'], $id);
   }
 
   /**
    * 
-   * @param CursosImagens_Model $cursos modelo.
+   * @param ProdutosImagens_Model $produtos modelo.
    */
-  private function saveAdicional(CursosImagens_Model $imagemAdicional, $curso_id)
+  private function saveAdicional(ProdutosImagens_Model $imagemAdicional, $produto_id)
   {
     $this->load->helper('html');
     $this->load->helper('url');
@@ -94,7 +94,7 @@ class Curso extends CI_Controller
     $this->load->helper('text');
 
     $this->_init_library_upload();
-    $imagemAdicional->curso_id = $curso_id;
+    $imagemAdicional->produto_id = $produto_id;
     if ($this->upload->do_upload('imagemAdicional')) {
 
       $imagemAdicional->imagem = $this->upload->file_name;
@@ -102,36 +102,36 @@ class Curso extends CI_Controller
     }
 
     $imagemAdicional->save();
-    redirect('admin/curso/form/' . $curso_id . '');
+    redirect('admin/produto/form/' . $produto_id . '');
   }
 
 
   /**
    * 
-   * @param Cursos_Model $cursos modelo.
+   * @param Produtos_Model $produtos modelo.
    */
-  private function save(Cursos_Model $curso)
+  private function save(Produtos_Model $produto)
   {
     $this->load->helper('html');
     $this->load->helper('url');
     $this->load->helper('form');
     $this->load->library('form_validation');
     $this->load->helper('text');
-    $curso->titulo = $this->input->post('titulo');
-    $curso->descricao = $this->input->post('descricao');
-    $curso->slug = url_title(convert_accented_characters($curso->titulo), 'dash', TRUE);
-    $curso->categoria_id = $this->input->post('categoria');
+    $produto->titulo = $this->input->post('titulo');
+    $produto->descricao = $this->input->post('descricao');
+    $produto->slug = url_title(convert_accented_characters($produto->titulo), 'dash', TRUE);
+    $produto->categoria_id = $this->input->post('categoria');
 
     $this->_init_library_upload();
 
     if ($this->upload->do_upload('userfile')) {
 
-      $curso->imagem = $this->upload->file_name;
-      $this->_init_library_image($curso->imagem);
+      $produto->imagem = $this->upload->file_name;
+      $this->_init_library_image($produto->imagem);
     }
 
-    $curso->save();
-    redirect('admin/curso');
+    $produto->save();
+    redirect('admin/produto');
   }
 
   /* ----------------------------------------------------------------------- */
@@ -154,11 +154,11 @@ class Curso extends CI_Controller
    */
   public function delete($id)
   {
-    $this->Cursos_Model = $this->Cursos_Model->get_where('id', $id);
-    if ($this->Cursos_Model->delete()) {
-      if (!is_null($this->Cursos_Model->imagem)) {
-        unlink('./upload/' . $this->Cursos_Model->imagem);
-        unlink('./upload/tumb/' . $this->Cursos_Model->imagem);
+    $this->Produtos_Model = $this->Produtos_Model->get_where('id', $id);
+    if ($this->Produtos_Model->delete()) {
+      if (!is_null($this->Produtos_Model->imagem)) {
+        // unlink('./upload/' . $this->Produtos_Model->imagem);
+        unlink('./upload/tumb/' . $this->Produtos_Model->imagem);
       }
     }
     // Redireciona para pagina anterior
@@ -167,16 +167,16 @@ class Curso extends CI_Controller
 
 
   /**
-   * Deleta Imagem Adicional do curso
+   * Deleta Imagem Adicional do produto
    * @param int $id identificador.
    */
   public function deleteAdicional($id)
   {
-    $this->CursosImagens_Model = $this->CursosImagens_Model->get_where('id', $id);
-    if ($this->CursosImagens_Model->delete()) {
-      if (!is_null($this->CursosImagens_Model->imagem)) {
-        unlink('./upload/' . $this->CursosImagens_Model->imagem);
-        unlink('./upload/tumb/' . $this->CursosImagens_Model->imagem);
+    $this->ProdutosImagens_Model = $this->ProdutosImagens_Model->get_where('id', $id);
+    if ($this->ProdutosImagens_Model->delete()) {
+      if (!is_null($this->ProdutosImagens_Model->imagem)) {
+        unlink('./upload/' . $this->ProdutosImagens_Model->imagem);
+        unlink('./upload/tumb/' . $this->ProdutosImagens_Model->imagem);
       }
     }
     // Redireciona para pagina anterior
@@ -192,6 +192,16 @@ class Curso extends CI_Controller
    */
   private function _init_library_upload()
   {
+
+    $this->load->library('upload', array(
+      'upload_path' => './upload/tumb/',
+      'allowed_types' => 'jpg|JPG|jpeg|JPEG|png|PNG',
+      'encrypt_name' => TRUE,
+      'max_size' => 2000,
+      'max_width' => 5000,
+      // Tamanho maximo da foto.
+      'max_height' => 5000
+    ));
 
     $this->load->library('upload', array(
       'upload_path' => './upload/',
@@ -224,7 +234,7 @@ class Curso extends CI_Controller
   private function _init_library_pagination($total, $limite)
   {
 
-    $config['base_url'] = site_url('admin/curso/index/');
+    $config['base_url'] = site_url('admin/produto/index/');
     $config['total_rows'] = $total;
     $config['per_page'] = $limite;
     // Numero de paginas.

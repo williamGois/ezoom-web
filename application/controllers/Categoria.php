@@ -18,7 +18,7 @@ class Categoria extends CI_Controller
 
     $header['categorias'] = $this->Categoria_Model->get_list();
     $index['categoria'] = $this->Categoria_Model->get_where('slug', $slug);
-    $index['cursos'] = $this->Categoria_Model->get_cursos($slug);
+    $index['produtos'] = $this->Categoria_Model->get_produtos($slug);
 
     $this->load->view('templates/header', $header);
     $this->load->view('categorias/index', $index);

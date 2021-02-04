@@ -24,12 +24,12 @@ class Categoria_Model extends MY_Model
     return $result->first_row(self::class);
   }
 
-  // Busca os cursos por Categoria
-  public function get_cursos($slug)
+  // Busca os produtos por Categoria
+  public function get_produtos($slug)
   {
-    $this->db->select('cursos.*');
-    $this->db->from('cursos');
-    $this->db->join('categoria', 'cursos.categoria_id = categoria.id');
+    $this->db->select('produtos.*');
+    $this->db->from('produtos');
+    $this->db->join('categoria', 'produtos.categoria_id = categoria.id');
     $this->db->where('categoria.slug', $slug);
 
     $result = $this->db->get();

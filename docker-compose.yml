@@ -1,0 +1,67 @@
+version: '3'
+services:
+
+  #PHP Service
+  seguros:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: digitalocean.com/php
+    container_name: seguros
+    restart: always
+    tty: true
+    environment:
+      SERVICE_NAME: seguros
+      SERVICE_TAGS: dev
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+      - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - seguros-network
+
+  #Nginx Service
+  webservice:
+    image: nginx:alpine
+    container_name: webservice
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "80:80"
+      - "443:443"
+    links:
+      - db
+    depends_on:
+    - db
+    volumes:
+      - ./:/var/www
+      - ./nginx/conf.d/:/etc/nginx/conf.d/
+    networks:
+      - seguros-network
+
+  #MySQL Service
+  db:
+    image: mysql:5.7
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: root
+      MYSQL_DATABASE: 91-seguros
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - dbdata:/var/lib/mysql/
+      - ./mysql/my.cnf:/etc/mysql/my.cnf
+    networks:
+      - seguros-network
+
+#Docker Networks
+networks:
+  seguros-network:
+    driver: bridge
+#Volumes
+volumes:
+  dbdata:
+    driver: local

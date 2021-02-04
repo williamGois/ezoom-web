@@ -5,17 +5,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Ezoom Cursos</title>
+  <title>91 seguros</title>
   
   <?= link_tag('assets/bootstrap/css/bootstrap.min.css') ?>
   <?= link_tag('assets/app/css/app.css') ?>
-  <?= link_tag('assets/app/css/curso.min.css') ?>
+  <?= link_tag('assets/app/css/produto.min.css') ?>
 </head>
 <body>
 
   <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 	<div class="navbar-header">
-	  <a class="navbar-brand" rel="home" href="<?= base_url() ?>">Ezoom Cursos</a>
+	  <a class="navbar-brand" rel="home" href="<?= base_url() ?>">91 seguros</a>
 	  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 		<span class="sr-only">Toggle navigation</span>
 		<span class="icon-bar"></span>
